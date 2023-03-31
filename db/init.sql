@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 CREATE TABLE IF NOT EXISTS `listings` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(60) NOT NULL,
-    `prize` int(11) NOT NULL,
+    `price` int(11) NOT NULL,
     `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
     `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
