@@ -7,9 +7,10 @@ const getListings = async (req, res) => {
     if (response) {
       res.send(response);
     }
+    console.log(response);
   } catch (err) {
     console.log(err);
-    res.status(500).send("Something went wrong");
+    res.status(500).send("Something went wrong in getlistings");
   }
 };
 
