@@ -1,0 +1,23 @@
+.span {
+  cursor: pointer;
+  color: rgb(6, 69, 173);
+  text-decoration: underline;
+  align-items: left;
+}
+
+.authentication__header {
+  color: white;
+  text-align: center;
+}
+
+.authentication {
+  width: 90%;
+  max-width: 25rem;
+  margin: 7rem auto;
+  text-align: center;
+  align-items: center;
+}
+
+.authentication form {
+  margin-bottom: 1rem;
+}

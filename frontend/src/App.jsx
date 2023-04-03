@@ -8,6 +8,7 @@ import "./App.css";
 
 import Listings from "../listings/pages/Listings";
 import AddListing from "../listings/pages/AddListings";
+import Authenticate from "../users/pages/Authenticate";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route path="/new" exact>
           <AddListing />
+        </Route>
+        <Route path="/auth" exact>
+          <Authenticate />
         </Route>
         <Redirect to="/" />
       </Switch>
