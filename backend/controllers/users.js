@@ -52,6 +52,50 @@ const signUpUser = async (req, res) => {
   }
 };
 
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  let identifieduser;
+  try {
+    const result = await users.findByEmail(email);
+    if (!result[0]) {
+      return res.status(400).send("No users found");
+    }
+  } catch (err) {
+    return res.status(500).send("Something went wrong");
+  }
+
+  let isValidPassword;
+  try {
+    isValidPassword = await bcrypt.compare(password, identifieduser.password);
+    if (!isValidPassword) {
+      return res.status(401).send("No user found");
+    }
+  } catch (err) {
+    return res.status(500).send("Something went wrong");
+  }
+
+  try {
+    const token = jwt.sign(
+      {
+        id: identifieduser.id,
+        email: identifieduser.email,
+      },
+      process.env.JWT_KEY,
+      { expiresIn: "2h" }
+    );
+
+    res.status(201).json({
+      id: identifieduser.id,
+      email: identifieduser.email,
+      token,
+    });
+  } catch (err) {
+    return res.status(500).send("Something went wrong");
+  }
+};
+
 module.exports = {
+  loginUser,
   signUpUser,
 };
