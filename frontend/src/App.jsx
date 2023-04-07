@@ -14,6 +14,8 @@ import Listings from "../listings/pages/Listings";
 import AddListing from "../listings/pages/AddListings";
 import Authenticate from "../users/pages/Authenticate";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 const queryClient = new QueryClient();
 
 let logoutTimer;
