@@ -10,6 +10,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 import { AuthContext } from "../shared/context/auth-context";
 
+import MainNavigation from "../shared/components/navigation/MainNavigation";
 import Listings from "../listings/pages/Listings";
 import AddListing from "../listings/pages/AddListings";
 import Authenticate from "../users/pages/Authenticate";
@@ -112,6 +113,7 @@ function App() {
     >
       <QueryClientProvider client={queryClient}>
         <Router>
+          <MainNavigation />
           <main>{routes}</main>
         </Router>
       </QueryClientProvider>
