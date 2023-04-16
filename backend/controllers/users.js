@@ -61,18 +61,22 @@ const loginUser = async (req, res) => {
     if (!result[0]) {
       return res.status(400).send("No users found");
     }
+    identifieduser = result[0];
   } catch (err) {
-    return res.status(500).send("Something went wrong");
+    console.log(err);
+    return res.status(500).send("Something went wrong test");
   }
 
   let isValidPassword;
   try {
+    console.log(password);
     isValidPassword = await bcrypt.compare(password, identifieduser.password);
     if (!isValidPassword) {
       return res.status(401).send("No user found");
     }
   } catch (err) {
-    return res.status(500).send("Something went wrong");
+    console.log(err);
+    return res.status(500).send("Something went wrong invalid password");
   }
 
   try {
@@ -91,7 +95,7 @@ const loginUser = async (req, res) => {
       token,
     });
   } catch (err) {
-    return res.status(500).send("Something went wrong");
+    return res.status(500).send("Something went wrong errorjoku");
   }
 };
 
