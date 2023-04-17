@@ -7,15 +7,16 @@ const ListingsList = (props) => {
 
   return (
     <ul>
-      {props.items.map((listing) => {
+      {props.items.map((listing) => (
         <ListingItem
           key={listing.id}
           id={listing.id}
+          user={listing.user}
           name={listing.name}
           price={listing.price}
           created={listing.created}
-        />;
-      })}
+        />
+      ))}
     </ul>
   );
 };
