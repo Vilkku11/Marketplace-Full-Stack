@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
+import { Alert } from "react-bootstrap";
 
 //import Card from "../../shared/components/card/Card";
 //import Input from "../../shared/components/input/Input";
@@ -17,12 +18,14 @@ import "./Authenticate.css";
 const Authenticate = (props) => {
   const [isLoginMode, setLoginMode] = useState(true);
   const auth = useContext(AuthContext);
+  const [authError, setAuthError] = useState(false);
 
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
 
   const changeLoginMode = () => {
+    setAuthError(false);
     setLoginMode((prevMode) => !prevMode);
   };
 
@@ -34,6 +37,7 @@ const Authenticate = (props) => {
     },
     onError: (error) => {
       console.log(error);
+      setAuthError("Failed to sign up, please try again");
     },
   });
 
@@ -45,12 +49,14 @@ const Authenticate = (props) => {
     },
     onError: (error) => {
       console.log(error);
+      setAuthError("Failed to log in, please check your credentials");
     },
   });
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    console.log(emailRef);
+
+    setAuthError(false);
     if (isLoginMode) {
       loginUserMutation.mutate({
         email: emailRef.current.value,
@@ -68,7 +74,10 @@ const Authenticate = (props) => {
   return (
     <Card className="authentication">
       <Card.Body>
-        <h2 className="mb-3">{isLoginMode ? "Login" : "Sign Up"}</h2>
+        <h2 className="mb-3 text-center">
+          {isLoginMode ? "Login" : "Sign Up"}
+        </h2>
+        {authError && <Alert variant="danger">{authError}</Alert>}
         <Form onSubmit={onSubmitHandler}>
           {!isLoginMode && (
             <Form.Group id="name">
