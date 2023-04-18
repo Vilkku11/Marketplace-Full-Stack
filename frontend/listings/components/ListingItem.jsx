@@ -12,7 +12,7 @@ const ListingItem = (props) => {
     <li>
       <Card>
         <Card.Body>
-          <h2>{props.name}</h2>
+          <h2 className="text-center">{props.name}</h2>
           <p>{props.price}</p>
           <p>{props.created}</p>
           <p>{props.user}</p>
