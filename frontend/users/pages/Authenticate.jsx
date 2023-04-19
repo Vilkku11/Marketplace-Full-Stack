@@ -24,7 +24,8 @@ const Authenticate = (props) => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const changeLoginMode = () => {
+  const changeLoginMode = (event) => {
+    event.preventDefault();
     setAuthError(false);
     setLoginMode((prevMode) => !prevMode);
   };
@@ -32,6 +33,7 @@ const Authenticate = (props) => {
   const signUpUserMutation = useMutation({
     mutationFn: signUpUser,
     onSuccess: (data) => {
+      console.log("in signuptest");
       console.log(data);
       auth.login(data.id, data.token);
     },
@@ -44,6 +46,7 @@ const Authenticate = (props) => {
   const loginUserMutation = useMutation({
     mutationFn: loginUser,
     onSuccess: (data) => {
+      console.log("sugges logging");
       console.log(data);
       auth.login(data.id, data.token);
     },
@@ -101,12 +104,17 @@ const Authenticate = (props) => {
         {isLoginMode ? (
           <div>
             Don't have an account?{" "}
-            <Link onClick={changeLoginMode}> Sign up</Link>
+            <Link to="/" onClick={changeLoginMode}>
+              {" "}
+              Sign up
+            </Link>
           </div>
         ) : (
           <div>
             Already have an account?{" "}
-            <Link onClick={changeLoginMode}>Log in</Link>
+            <Link to="/" onClick={changeLoginMode}>
+              Log in
+            </Link>
           </div>
         )}
       </Card.Body>

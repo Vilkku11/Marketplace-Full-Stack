@@ -14,6 +14,9 @@ const MainNavigation = () => {
           ) : (
             <Nav.Link href="/auth">Login</Nav.Link>
           )}
+          <Nav>
+            {auth.isLoggedIn && <Nav.Link href="/new">New Listing</Nav.Link>}
+          </Nav>
         </Nav>
       </Container>
     </Navbar>

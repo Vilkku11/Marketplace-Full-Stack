@@ -8,15 +8,14 @@ const users = {
           return reject(err);
         }
 
-        connection.query("INSERT INTO users SET ?;", user),
-          (err, result) => {
-            connection.release();
-            if (err) {
-              reject(err);
-            } else {
-              resolve(result);
-            }
-          };
+        connection.query("INSERT INTO users SET ?;", user, (err, result) => {
+          connection.release();
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
+          }
+        });
       });
     }),
   findByEmail: (email) =>
@@ -39,4 +38,5 @@ const users = {
       });
     }),
 };
+
 module.exports = users;

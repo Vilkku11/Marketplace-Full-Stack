@@ -8,11 +8,10 @@ const signUpUser = async (req, res) => {
   const { name, email, password } = req.body;
 
   let hashedPassword;
-
   try {
     hashedPassword = await bcrypt.hash(password, 12);
   } catch (err) {
-    return res.status(500).send("Could not create an user!");
+    return res.status(500).send("Could not create user, try again please");
   }
 
   const newUser = {
@@ -24,13 +23,16 @@ const signUpUser = async (req, res) => {
 
   try {
     const exist = await users.findByEmail(newUser.email);
+
     if (exist.length > 0) {
-      return res.status(422).send("User already exists!");
+      return res.status(422).send("Could create user, user exists");
     }
 
     const result = await users.create(newUser);
+
+    console.log(result);
     if (!result) {
-      return res.status(500).send("Could not create an user!");
+      return res.status(500).send("Could not create user, try again please");
     }
 
     const token = jwt.sign(
@@ -39,7 +41,7 @@ const signUpUser = async (req, res) => {
         email: newUser.email,
       },
       process.env.JWT_KEY,
-      { expiresIn: "2h" }
+      { expiresIn: "1h" }
     );
 
     res.status(201).json({
@@ -48,54 +50,51 @@ const signUpUser = async (req, res) => {
       token,
     });
   } catch (err) {
-    return res.status(500).send("Could not create user!");
+    return res.status(500).send("Could not create user, try again please");
   }
 };
 
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
-  let identifieduser;
+  let identifiedUser;
   try {
     const result = await users.findByEmail(email);
     if (!result[0]) {
-      return res.status(400).send("No users found");
+      return res.status(401).send("No user found - Check your credentials");
     }
-    identifieduser = result[0];
+    identifiedUser = result[0];
   } catch (err) {
-    console.log(err);
-    return res.status(500).send("Something went wrong test");
+    return res.status(500).send("Something went wrong");
   }
 
   let isValidPassword;
   try {
-    console.log(password);
-    isValidPassword = await bcrypt.compare(password, identifieduser.password);
+    isValidPassword = await bcrypt.compare(password, identifiedUser.password);
     if (!isValidPassword) {
-      return res.status(401).send("No user found");
+      return res.status(401).send("No user found - Check your credentials");
     }
   } catch (err) {
-    console.log(err);
-    return res.status(500).send("Something went wrong invalid password");
+    return res.status(500).send("Something went wrong");
   }
 
   try {
     const token = jwt.sign(
       {
-        id: identifieduser.id,
-        email: identifieduser.email,
+        id: identifiedUser.id,
+        email: identifiedUser.email,
       },
       process.env.JWT_KEY,
-      { expiresIn: "2h" }
+      { expiresIn: "1h" }
     );
 
     res.status(201).json({
-      id: identifieduser.id,
-      email: identifieduser.email,
+      id: identifiedUser.id,
+      email: identifiedUser.email,
       token,
     });
   } catch (err) {
-    return res.status(500).send("Something went wrong errorjoku");
+    return res.status(500).send("Something went wrong");
   }
 };
 
