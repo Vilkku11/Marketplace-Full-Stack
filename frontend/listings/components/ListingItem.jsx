@@ -7,7 +7,6 @@ import Card from "react-bootstrap/Card";
 const ListingItem = (props) => {
   //const auth = useContext(AuthContext);
 
-  console.log("anythiiing :(");
   return (
     <li>
       <Card>

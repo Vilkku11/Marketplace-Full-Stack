@@ -18,10 +18,12 @@ const createListing = async (req, res) => {
   const schema = Joi.object({
     name: Joi.string().min(4).required(),
     price: Joi.number().required(),
+    userId: Joi.string().required(),
   });
 
   const { error } = schema.validate(req.body);
   if (error) {
+    console.log(error.details[0].message);
     res.status(400).send(error.details[0].message);
     return;
   }
@@ -29,6 +31,7 @@ const createListing = async (req, res) => {
   const listing = {
     name: req.body.name,
     price: req.body.price,
+    user: req.body.userId,
   };
 
   try {

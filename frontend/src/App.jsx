@@ -12,8 +12,9 @@ import { AuthContext } from "../shared/context/auth-context";
 
 import MainNavigation from "../shared/components/navigation/MainNavigation";
 import Listings from "../listings/pages/Listings";
-import AddListings from "../listings/pages/AddListings";
+
 import Authenticate from "../users/pages/Authenticate";
+import AddListing from "../listings/components/AddListing";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -82,7 +83,7 @@ function App() {
           <Listings />
         </Route>
         <Route path="/new" exact>
-          <AddListings />
+          <AddListing />
         </Route>
         <Redirect to="/" />
       </Switch>
@@ -96,7 +97,6 @@ function App() {
         <Route path="/auth" exact>
           <Authenticate />
         </Route>
-        <Redirect to="/" />
       </Switch>
     );
   }
