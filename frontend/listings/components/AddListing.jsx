@@ -52,7 +52,7 @@ const AddListing = () => {
         <Form onSubmit={listingSubmitHandler} className="needs-validation">
           <Form.Group id="name">
             <Form.Label>Name</Form.Label>
-            <Form.Control type="text" ref={nameRef} required />
+            <Form.Control type="text" minLength={4} ref={nameRef} required />
           </Form.Group>
           <Form.Group id="number">
             <Form.Label>Price</Form.Label>
