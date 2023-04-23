@@ -14,6 +14,7 @@ const ListingsList = (props) => {
           user={listing.user}
           name={listing.name}
           price={listing.price}
+          image={listing.image}
           created={listing.created}
         />
       ))}

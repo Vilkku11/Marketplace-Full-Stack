@@ -18,9 +18,9 @@ const createListing = async (req, res) => {
   const schema = Joi.object({
     name: Joi.string().min(4).required(),
     price: Joi.number().required(),
+    image: Joi.string(),
     userId: Joi.string().required(),
   });
-
   const { error } = schema.validate(req.body);
   if (error) {
     console.log(error.details[0].message);
@@ -31,9 +31,10 @@ const createListing = async (req, res) => {
   const listing = {
     name: req.body.name,
     price: req.body.price,
+    image: req.body.image,
     user: req.body.userId,
   };
-
+  console.log(listing);
   try {
     const result = await listings.findByListing(listing);
     if (result.length > 0) {

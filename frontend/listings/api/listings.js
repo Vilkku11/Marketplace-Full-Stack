@@ -3,7 +3,7 @@ export const getListings = async () => {
   return await res.json();
 };
 
-export const createListing = async ({ name, price, token, userId }) => {
+export const createListing = async ({ name, price, token, userId, image }) => {
   const res = await fetch("http://localhost:5000/listings", {
     method: "POST",
     headers: {
@@ -15,6 +15,7 @@ export const createListing = async ({ name, price, token, userId }) => {
       name,
       price,
       userId,
+      image,
     }),
   });
 

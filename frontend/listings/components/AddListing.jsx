@@ -13,6 +13,7 @@ import { Alert } from "react-bootstrap";
 const AddListing = () => {
   const nameRef = useRef();
   const priceRef = useRef();
+  const imageRef = useRef();
 
   const auth = useContext(AuthContext);
   const history = useHistory();
@@ -36,10 +37,11 @@ const AddListing = () => {
     createListingMutation.mutate({
       name: nameRef.current.value,
       price: priceRef.current.value,
+      image: imageRef.current.value,
       token: auth.token,
       userId: auth.userId,
     });
-    console.log(submitError);
+    console.log(auth.email);
     // history.push("/");
   };
 
@@ -47,20 +49,20 @@ const AddListing = () => {
     <Card>
       <Card.Body>
         {submitError && <Alert variant="danger">{submitError}</Alert>}
-        <Form onSubmit={listingSubmitHandler}>
-          <Form.Group>
+        <Form onSubmit={listingSubmitHandler} className="needs-validation">
+          <Form.Group id="name">
             <Form.Label>Name</Form.Label>
             <Form.Control type="text" ref={nameRef} required />
           </Form.Group>
-          <Form.Group>
+          <Form.Group id="number">
             <Form.Label>Price</Form.Label>
-            <Form.Control type="text" ref={priceRef} required />
+            <Form.Control type="number" ref={priceRef} required />
           </Form.Group>
-          <Button
-            variant="primary"
-            className="mt-3"
-            onClick={listingSubmitHandler}
-          >
+          <Form.Group id="image">
+            <Form.Label>Image link</Form.Label>
+            <Form.Control type="text" ref={imageRef} required />
+          </Form.Group>
+          <Button variant="primary" className="mt-3" type="submit">
             Add Listing
           </Button>
         </Form>

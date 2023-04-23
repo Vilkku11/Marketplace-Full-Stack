@@ -1,11 +1,17 @@
 import { useContext, useState } from "react";
 
-//import { AuthContext } from "../../shared/context/auth-context";
+import { AuthContext } from "../../shared/context/auth-context";
 
 import Card from "react-bootstrap/Card";
+import { Button } from "react-bootstrap";
 
 const ListingItem = (props) => {
-  //const auth = useContext(AuthContext);
+  const auth = useContext(AuthContext);
+
+  let button;
+  if (auth.userId == props.user) {
+    button = <Button>Click me!</Button>;
+  }
 
   return (
     <li>
@@ -15,6 +21,8 @@ const ListingItem = (props) => {
           <p>{props.price}</p>
           <p>{props.created}</p>
           <p>{props.user}</p>
+          <div>{button}</div>
+          <p>{props.image}</p>
         </Card.Body>
       </Card>
     </li>

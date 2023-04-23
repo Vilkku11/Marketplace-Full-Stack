@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS `listings` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `user` varchar(60) NOT NULL,
     `name` varchar(60) NOT NULL,
+    `image` varchar(60),
     `price` int(11) NOT NULL,
     `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

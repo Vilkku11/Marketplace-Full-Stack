@@ -3,7 +3,7 @@ import { Nav, Navbar, Container } from "react-bootstrap";
 import { AuthContext } from "../../context/auth-context";
 const MainNavigation = () => {
   const auth = useContext(AuthContext);
-
+  
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
