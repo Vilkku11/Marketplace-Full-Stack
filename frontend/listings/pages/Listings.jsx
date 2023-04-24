@@ -5,8 +5,13 @@ import ListingsList from "../components/ListingsList";
 
 import { Spinner } from "react-bootstrap";
 
-const Listings = () => {
+import { useContext } from "react";
+import { AuthContext } from "../../shared/context/auth-context";
+
+const Listings = (props) => {
   const { isLoading, error, data } = useQuery("listingsData", getListings);
+  const auth = useContext(AuthContext);
+  let items = [];
 
   if (isLoading)
     return (
@@ -17,7 +22,22 @@ const Listings = () => {
 
   if (error) return "An error has occured: " + error.message;
 
-  return <ListingsList items={data} />;
+  if (props.user) {
+    console.log("proops");
+  }
+
+  if (props.profile) {
+    data.map((listing) => {
+      console.log(listing.user);
+      console.log(auth.userId);
+      if (listing.user == auth.userId) {
+        items.push(listing);
+      }
+    });
+    return <ListingsList items={items} />;
+  } else {
+    return <ListingsList items={data} />;
+  }
 };
 
 export default Listings;

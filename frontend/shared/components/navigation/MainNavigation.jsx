@@ -3,7 +3,7 @@ import { Nav, Navbar, Container } from "react-bootstrap";
 import { AuthContext } from "../../context/auth-context";
 const MainNavigation = () => {
   const auth = useContext(AuthContext);
-  
+
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
@@ -16,6 +16,9 @@ const MainNavigation = () => {
           )}
           <Nav>
             {auth.isLoggedIn && <Nav.Link href="/new">New Listing</Nav.Link>}
+          </Nav>
+          <Nav>
+            {auth.isLoggedIn && <Nav.Link href="/profile">Profile</Nav.Link>}
           </Nav>
         </Nav>
       </Container>

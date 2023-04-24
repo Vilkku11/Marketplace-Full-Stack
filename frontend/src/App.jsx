@@ -14,7 +14,8 @@ import MainNavigation from "../shared/components/navigation/MainNavigation";
 import Listings from "../listings/pages/Listings";
 
 import Authenticate from "../users/pages/Authenticate";
-import AddListing from "../listings/components/AddListing";
+import AddListing from "../listings/pages/AddListing";
+import Profile from "../users/pages/Profile";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -84,6 +85,9 @@ function App() {
         </Route>
         <Route path="/new" exact>
           <AddListing />
+        </Route>
+        <Route path="/profile" exact>
+          <Profile />
         </Route>
         <Redirect to="/" />
       </Switch>
