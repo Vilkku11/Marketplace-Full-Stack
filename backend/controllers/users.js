@@ -25,14 +25,20 @@ const signUpUser = async (req, res) => {
     const exist = await users.findByEmail(newUser.email);
 
     if (exist.length > 0) {
-      return res.status(422).send("Could create user, user exists");
+      return res.status(422).send("Email already tied to an account");
+    }
+
+    const foundName = await users.findByName(newUser.name);
+
+    if (foundName.length > 0) {
+      return res.status(422).send("Username already taken");
     }
 
     const result = await users.create(newUser);
 
     console.log(result);
     if (!result) {
-      return res.status(500).send("Could not create user, try again please");
+      return res.status(500).send("Could not create user, please try again");
     }
 
     const token = jwt.sign(
@@ -50,7 +56,7 @@ const signUpUser = async (req, res) => {
       token,
     });
   } catch (err) {
-    return res.status(500).send("Could not create user, try again please");
+    return res.status(500).send("Could not create user, please try again");
   }
 };
 

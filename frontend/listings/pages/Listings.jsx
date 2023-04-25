@@ -28,9 +28,7 @@ const Listings = (props) => {
 
   if (props.profile) {
     data.map((listing) => {
-      console.log(listing.user);
-      console.log(auth.userId);
-      if (listing.user == auth.userId) {
+      if (listing.user_id == auth.userId) {
         items.push(listing);
       }
     });
