@@ -48,7 +48,11 @@ const Authenticate = (props) => {
     onSuccess: (data) => {
       console.log("sugges logging");
       console.log(data);
-      auth.login(data.id, data.token);
+      console.log(data.id);
+      console.log(data.email);
+      console.log(data.token);
+      console.log(auth.login);
+      auth.login(data.id, data.token, data.email);
     },
     onError: (error) => {
       console.log(error);

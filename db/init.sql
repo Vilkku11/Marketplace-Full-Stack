@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 CREATE TABLE IF NOT EXISTS `listings` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
+    `user_id` varchar(60) NOT NULL,
     `user` varchar(60) NOT NULL,
     `name` varchar(60) NOT NULL,
     `image` varchar(60),
@@ -18,4 +19,4 @@ CREATE TABLE IF NOT EXISTS `listings` (
     `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-INSERT INTO `listings` (`user`,`name`, `price`) VALUES ('tester420','tuote' , 90);
+INSERT INTO `listings` (`user_id`,`user`,`name`, `price`) VALUES ('testuserid','testuser' , 'testname', 420);

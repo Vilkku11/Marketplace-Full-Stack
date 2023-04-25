@@ -1,5 +1,6 @@
 const Joi = require("joi");
 const listings = require("../models/listings");
+const users = require("../models/users");
 
 const getListings = async (req, res) => {
   try {
@@ -28,11 +29,18 @@ const createListing = async (req, res) => {
     return;
   }
 
+  // fetch user name for listing
+  const user = await users.findByUserId(req.body.userId);
+  if (!user) {
+    res.status(400).send("No user found");
+  }
+
   const listing = {
     name: req.body.name,
     price: req.body.price,
     image: req.body.image,
-    user: req.body.userId,
+    user_id: req.body.userId,
+    user: user[0].name,
   };
   console.log(listing);
   try {

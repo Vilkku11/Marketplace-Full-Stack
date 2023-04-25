@@ -10,6 +10,7 @@ export const loginUser = async ({ email, password }) => {
       password,
     }),
   });
+
   return await response.json();
 };
 

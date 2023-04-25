@@ -6,11 +6,7 @@ const listings = require("./routes/listings");
 
 const app = express();
 
-app.use(
-  cors({
-    origin: ["http://localhost:5173"],
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 

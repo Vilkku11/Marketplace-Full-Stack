@@ -37,6 +37,25 @@ const users = {
         );
       });
     }),
+  findByUserId: (uid) =>
+    new Promise((resolve, reject) => {
+      pool.getConnection((err, connection) => {
+        if (err) {
+          return reject(err);
+        }
+        connection.query(
+          "SELECT * FROM users WHERE id LIKE ?;",
+          uid,
+          (err, result) => {
+            connection.release();
+            if (err) {
+              return reject(err);
+            }
+            resolve(result);
+          }
+        );
+      });
+    }),
 };
 
 module.exports = users;

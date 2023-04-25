@@ -8,9 +8,11 @@ import { Button } from "react-bootstrap";
 const ListingItem = (props) => {
   const auth = useContext(AuthContext);
 
-  let button;
-  if (auth.userId == props.user) {
-    button = <Button>Click me!</Button>;
+  let editButton;
+  let deleteButton;
+  if (auth.userId == props.userId) {
+    editButton = <Button>Edit</Button>;
+    deleteButton = <Button variant="danger">Delete</Button>;
   }
 
   return (
@@ -21,8 +23,12 @@ const ListingItem = (props) => {
           <p>{props.price}</p>
           <p>{props.created}</p>
           <p>{props.user}</p>
-          <div>{button}</div>
+          <p>{props.userId}</p>
           <img src={props.image} alt={props.image}></img>
+          <div>
+            {editButton}
+            {deleteButton}
+          </div>
         </Card.Body>
       </Card>
     </li>

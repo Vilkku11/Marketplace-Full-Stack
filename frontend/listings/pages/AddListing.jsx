@@ -17,9 +17,9 @@ const AddListing = () => {
 
   const auth = useContext(AuthContext);
   const history = useHistory();
-
+  console.log(auth);
+  console.log(auth.token);
   const [submitError, setSubmitError] = useState(false);
-
   const createListingMutation = useMutation({
     mutationFn: createListing,
     onSuccess: (data) => {

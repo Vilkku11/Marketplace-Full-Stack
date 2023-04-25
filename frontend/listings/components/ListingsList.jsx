@@ -12,6 +12,7 @@ const ListingsList = (props) => {
           key={listing.id}
           id={listing.id}
           user={listing.user}
+          userId={listing.user_id}
           name={listing.name}
           price={listing.price}
           image={listing.image}

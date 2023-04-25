@@ -7,6 +7,7 @@ const { getListings, createListing } = require("../controllers/listings");
 
 router.get("/", getListings);
 
+router.use(verifyToken);
 router.post("/", createListing);
 
 module.exports = router;

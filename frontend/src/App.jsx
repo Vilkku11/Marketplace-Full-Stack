@@ -28,9 +28,10 @@ function App() {
   const [userId, setuser] = useState(false);
   const [tokenExpirationDate, setTokenExpirationDate] = useState(false);
 
-  const login = useCallback((uid, token, expirationDate) => {
+  const login = useCallback((uid, token, email, expirationDate) => {
     setToken(token);
     setuser(uid);
+
     const tokenExpirationDate =
       expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
     setTokenExpirationDate(tokenExpirationDate);
