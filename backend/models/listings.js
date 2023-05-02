@@ -58,6 +58,23 @@ const listings = {
         );
       });
     }),
+  deleteById: (id) =>
+    new Promise((resolve, reject) => {
+      const deleteQuery = "DELETE FROM listings WHERE id=?;";
+      pool.getConnection((err, connection) => {
+        if (err) {
+          return reject(err);
+        }
+
+        connection.query(deleteQuery, id, (err, result) => {
+          connection.release();
+          if (err) {
+            return reject(err);
+          }
+          resolve(result);
+        });
+      });
+    }),
 };
 
 module.exports = listings;

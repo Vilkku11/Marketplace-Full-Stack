@@ -21,3 +21,19 @@ export const createListing = async ({ name, price, token, userId, image }) => {
 
   return await res.json();
 };
+
+export const deleteListing = async ({ id, token }) => {
+  const res = await fetch("http://localhost:5000/listings/delete", {
+    methond: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: "BEARER " + token,
+    },
+    body: JSON.stringify({
+      id,
+    }),
+  });
+
+  return await res.json();
+};

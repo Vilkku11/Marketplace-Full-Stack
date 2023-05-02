@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
+import { useMutation } from "react-query";
 
 import { AuthContext } from "../../shared/context/auth-context";
+import { deleteListing } from "../api/listings";
 
 import Card from "react-bootstrap/Card";
 import { Button } from "react-bootstrap";
@@ -8,11 +10,27 @@ import { Button } from "react-bootstrap";
 const ListingItem = (props) => {
   const auth = useContext(AuthContext);
 
+  const deleteListingMutation = useMutation({
+    mutationFn: deleteListing,
+  });
+
+  const listingDeleteHandler = (event) => {
+    event.preventDefault();
+    deleteListingMutation.mutate({
+      id: props.id,
+      token: auth.token,
+    });
+  };
+
   let editButton;
   let deleteButton;
   if (auth.userId == props.userId) {
     editButton = <Button>Edit</Button>;
-    deleteButton = <Button variant="danger">Delete</Button>;
+    deleteButton = (
+      <Button onClick={listingDeleteHandler} variant="danger">
+        Delete
+      </Button>
+    );
   }
 
   return (

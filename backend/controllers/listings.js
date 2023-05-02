@@ -60,7 +60,19 @@ const createListing = async (req, res) => {
   }
 };
 
+const deleteListing = async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    const response = await listings.deleteById(id);
+    if (response) {
+      res.status(200).json("Listing deleted");
+    }
+  } catch (err) {
+    res.status(500).send("Somethin went wrong :(");
+  }
+};
 module.exports = {
   getListings,
   createListing,
+  deleteListing,
 };
