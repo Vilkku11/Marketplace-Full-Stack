@@ -62,7 +62,8 @@ const createListing = async (req, res) => {
 
 const deleteListing = async (req, res) => {
   try {
-    const id = parseInt(req.params.id);
+    console.log(req.body.id);
+    const id = parseInt(req.body.id);
     const response = await listings.deleteById(id);
     if (response) {
       res.status(200).json("Listing deleted");

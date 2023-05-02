@@ -24,7 +24,7 @@ export const createListing = async ({ name, price, token, userId, image }) => {
 
 export const deleteListing = async ({ id, token }) => {
   const res = await fetch("http://localhost:5000/listings/delete", {
-    methond: "POST",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
