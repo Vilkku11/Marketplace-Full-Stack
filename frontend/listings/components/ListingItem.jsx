@@ -22,10 +22,8 @@ const ListingItem = (props) => {
     });
   };
 
-  let editButton;
   let deleteButton;
   if (auth.userId == props.userId) {
-    editButton = <Button>Edit</Button>;
     deleteButton = (
       <Button onClick={listingDeleteHandler} variant="danger">
         Delete
@@ -43,10 +41,7 @@ const ListingItem = (props) => {
           <p>{props.user}</p>
           <p>{props.userId}</p>
           <img src={props.image} alt={props.image}></img>
-          <div>
-            {editButton}
-            {deleteButton}
-          </div>
+          <div>{deleteButton}</div>
         </Card.Body>
       </Card>
     </li>
