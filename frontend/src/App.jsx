@@ -8,14 +8,14 @@ import {
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import { AuthContext } from "../shared/context/auth-context";
+import { AuthContext } from "./shared/context/auth-context";
 
-import MainNavigation from "../shared/components/navigation/MainNavigation";
-import Listings from "../listings/pages/Listings";
+import MainNavigation from "./shared/components/navigation/MainNavigation";
+import Listings from "./listings/pages/Listings";
 
-import Authenticate from "../users/pages/Authenticate";
-import AddListing from "../listings/pages/AddListing";
-import Profile from "../users/pages/Profile";
+import Authenticate from "./users/pages/Authenticate";
+import AddListing from "./listings/pages/AddListing";
+import Profile from "./users/pages/Profile";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 

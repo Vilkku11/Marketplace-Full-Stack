@@ -6,6 +6,7 @@ import { deleteListing } from "../api/listings";
 
 import Card from "react-bootstrap/Card";
 import { Button } from "react-bootstrap";
+import "./ListingItem.css";
 
 const ListingItem = (props) => {
   const auth = useContext(AuthContext);
