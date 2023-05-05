@@ -1,5 +1,6 @@
+const url = import.meta.env.VITE_API_URL;
 export const loginUser = async ({ email, password }) => {
-  const response = await fetch("http://localhost:5000/users/login", {
+  const response = await fetch(url + "/users/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -15,7 +16,7 @@ export const loginUser = async ({ email, password }) => {
 };
 
 export const signUpUser = async ({ name, email, password }) => {
-  const response = await fetch("http://localhost:5000/users/signup", {
+  const response = await fetch(url + "/users/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

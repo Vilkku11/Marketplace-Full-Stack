@@ -1,10 +1,11 @@
+const url = import.meta.env.VITE_API_URL;
 export const getListings = async () => {
-  const res = await fetch("http://localhost:5000/listings");
+  const res = await fetch(url + "/listings");
   return await res.json();
 };
 
 export const createListing = async ({ name, price, token, userId, image }) => {
-  const res = await fetch("http://localhost:5000/listings", {
+  const res = await fetch(url + "/listings", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -23,7 +24,7 @@ export const createListing = async ({ name, price, token, userId, image }) => {
 };
 
 export const deleteListing = async ({ id, token }) => {
-  const res = await fetch("http://localhost:5000/listings/delete", {
+  const res = await fetch(url + "/listings/delete", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

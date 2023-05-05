@@ -104,7 +104,6 @@ const Authenticate = (props) => {
             {isLoginMode ? "LOGIN" : "SIGNUP"}
           </Button>
         </Form>
-
         {isLoginMode ? (
           <div>
             Don't have an account?{" "}
