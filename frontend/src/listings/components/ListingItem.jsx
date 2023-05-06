@@ -24,10 +24,17 @@ const ListingItem = (props) => {
   };
 
   let deleteButton;
+  let buyButton;
   if (auth.userId == props.userId) {
     deleteButton = (
       <Button onClick={listingDeleteHandler} variant="danger">
         Delete
+      </Button>
+    );
+  } else {
+    buyButton = (
+      <Button onClick={listingDeleteHandler} variant="success">
+        Buy
       </Button>
     );
   }
@@ -43,6 +50,7 @@ const ListingItem = (props) => {
           <p>{props.userId}</p>
           <img src={props.image} alt={props.image}></img>
           <div>{deleteButton}</div>
+          <div>{buyButton}</div>
         </Card.Body>
       </Card>
     </li>
