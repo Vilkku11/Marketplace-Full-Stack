@@ -1,6 +1,11 @@
 name: backend
 # event on which to run
-on: push
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - backend/**
 # jobs in this workflow
 jobs:
   # the testing job
