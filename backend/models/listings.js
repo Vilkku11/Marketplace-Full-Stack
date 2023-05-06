@@ -8,7 +8,6 @@ const listings = {
           return reject(err);
         }
         connection.query("SELECT * FROM listings", (err, result) => {
-          //connection.query("SHOW TABLES", (err, result) => {
           connection.release();
           if (err) {
             return reject(err);

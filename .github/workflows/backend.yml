@@ -65,4 +65,4 @@ jobs:
     steps:
       # Make a API call to the Render deploy hook
       - name: Trigger Deploy on Render
-        run: curl -X GET ${{ secrets.RENDER_TRIGGER }}
+        run: curl -X GET ${{ secrets.RENDER_BACKEND_TRIGGER }}
