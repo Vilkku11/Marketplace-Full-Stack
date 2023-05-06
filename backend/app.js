@@ -6,14 +6,7 @@ const listings = require("./routes/listings");
 
 const app = express();
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://final-project-marketplace-db.onrender.com/",
-    ],
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 
