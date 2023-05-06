@@ -23,3 +23,7 @@ Start frontend
 `cd frontend`
 `npm install`
 `npm run dev`
+
+## Project summary
+
+The design followed all the stuff done in this course. There was no major problems, every problem was something I could overcome. The biggest challenge was handling timetable. How to get project to at least somewhat ready before deadline.
